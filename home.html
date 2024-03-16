@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CipherSnap</title>
+    <link rel="stylesheet" href="home.css">
+</head>
+<body>
+    <h1>CipherSnap</h1>
+    <p>A tool for encrypting or decrypting your images</p>
+    <img src="istockphoto-1216959454-612x612.jpg" alt="Encryption Image">
+    <button class="button1" onclick="redirectToEncryption()">Encryption</button>
+    <button class="button2" onclick="redirectToDecryption()"">Decryption</button>
+
+    <script>
+        function redirectToEncryption() {
+            window.location.href = "encryption.html";
+        }
+        function redirectToDecryption() {
+            window.location.href = "decryption.html";
+        }
+    </script>
+</body>
+</html>
