@@ -4,8 +4,16 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CipherSnap</title>
+    <link rel="stylesheet" href="decryption.css">
 </head>
 <body>
     <h1>Decryption</h1>
+    <div class="container">
+        <label for="fileInput">Select an image file:</label>
+        <input type="file" id="fileInput" accept="image/*" onchange="handleFileSelect(event)">
+        <div id="imageDisplay"></div>
+      </div>
+      
+      <script src="script.js"></script>
 </body>
 </html>
