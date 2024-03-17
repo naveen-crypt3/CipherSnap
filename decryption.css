@@ -13,3 +13,21 @@ div{
     font-family: 'Product Sans', sans-serif;
     ;
 }
+.button1{
+    display: flex;
+    justify-content: center;
+    position: absolute;
+    bottom: 30%;
+    left: 46%;
+    font-size: 25px;
+    background-color: aliceblue;
+    color: black;
+    transition-duration: 0.4s;
+    font-family: "Product Sans";
+    border: #e85c4b;
+    border-radius: 10px;
+}
+.button1:hover {
+    background-color: #e85c4b;
+    color: white;
+  }
