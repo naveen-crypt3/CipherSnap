@@ -3,17 +3,64 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CipherSnap</title>
+    <title>Image Encryption</title>
     <link rel="stylesheet" href="encryption.css">
 </head>
 <body>
-    <h1>Encryption</h1>
+    <h1>Image Encryption</h1>
     <div class="container">
-        <label for="fileInput">Select an image file:</label>
-        <input type="file" id="fileInput" accept="image/*" onchange="handleFileSelect(event)">
+        <label for="fileInput">Select an image:</label>
+        <input type="file" id="fileInput" accept="image/*" onchange="displaySelectedImage()">
         <div id="imageDisplay"></div>
-      </div>
-      <button class="button1" onclick="redirectToEncryption()">Encrypt</button>
-      <script src="script.js"></script>
+        <button class="button1" onclick="encryptImage()">Encrypt</button>
+    </div>
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.0.0/crypto-js.min.js"></script> <!-- Include CryptoJS library -->
+
+    <script>
+        function displaySelectedImage() {
+            const fileInput = document.getElementById('fileInput');
+            const file = fileInput.files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    const imageDisplay = document.getElementById('imageDisplay');
+                    imageDisplay.innerHTML = '<img src="' + e.target.result + '" alt="Selected Image">';
+                };
+                reader.readAsDataURL(file);
+            }
+        }
+
+        async function encryptImage() {
+            const fileInput = document.getElementById('fileInput');
+            const file = fileInput.files[0];
+
+            if (!file) {
+                console.error('No file selected');
+                alert('Please select an image file.'); // Show error message in a popup
+                return;
+            }
+
+            const reader = new FileReader();
+            reader.onload = async function(e) {
+                const imageData = e.target.result.split(',')[1]; // Extract image data from Data URL
+
+                // Encrypt the image data using CryptoJS (example uses AES encryption)
+                const key = "YourSecretKey"; // Replace with your secret key
+                const encryptedData = CryptoJS.AES.encrypt(imageData, key).toString();
+
+                // Convert encrypted data to Blob
+                const encryptedBlob = new Blob([encryptedData], { type: 'text/plain' });
+
+                // Create download link for the encrypted image
+                const downloadLink = document.createElement('a');
+                downloadLink.href = URL.createObjectURL(encryptedBlob);
+                downloadLink.download = 'encrypted_image.txt'; // Change the filename and extension as needed
+                downloadLink.click();
+            };
+
+            reader.readAsDataURL(file);
+        }
+    </script>
 </body>
 </html>
