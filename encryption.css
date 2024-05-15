@@ -10,7 +10,7 @@ h1{
 
 div{
     text-align: center;
-    font-family: 'Product Sans', sans-serif;
+    font-f amily: 'Product Sans', sans-serif;
     ;
 }
 
@@ -32,3 +32,26 @@ div{
     background-color: #e85c4b;
     color: white;
   }
+.container {
+    text-align: center;
+}
+
+#imageDisplay {
+    width: 200px;
+    height: 200px;
+    margin-top: 20px;
+    border: 2px solid #ccc;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 80px;
+}
+
+#imageDisplay img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+}
